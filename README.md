@@ -15,5 +15,6 @@
 - Needs to be documented if employee did not do overtime
 
 ## UI
-Bootstrap -> formatting
+- x Bootstrap -> formatting
+
 # overtime
