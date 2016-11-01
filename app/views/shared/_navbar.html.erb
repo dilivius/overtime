@@ -12,7 +12,10 @@
         <%= link_to("Home", root_path) %>
       </li>
       <li class="<%= active_path?(posts_path) %>">
-      <%= link_to("Posts", posts_path) %>
+        <%= link_to("Posts", posts_path) %>
+      </li>
+      <li class="<%= active_path?(new_post_path) %>">
+        <%= link_to("Add New Entry", new_post_path, id: 'new_post_from_nav') %>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
