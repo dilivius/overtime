@@ -10,11 +10,14 @@
 ## Features:
 - Approval Workflow
 - SMS Sending -> link to approval or overtime input
-- Admin dashboard
+- x Admin dashboard
+- x Block non-admins from accessing the Admin Dashboard
 - Email summary to managers for approval
 - Needs to be documented if employee did not do overtime
 
-## UI
+## UI:
 - x Bootstrap -> formatting
 
-# overtime
+# Refactor TO DOs:
+- Refactor user association integration test in post_spec
+- Refactor posts/_form for admin user with status
