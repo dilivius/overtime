@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  let(:user) { FactoryGirl.create(:user)}
+  let(:post) do
+    Post.create(date: Date.today, rationale: "rationale", user_id: user.id)
+  end
+
   before do
-    @user = FactoryGirl.create(:user)
-    login_as(@user, scope: :user)
+    login_as(user, scope: :user)
   end
 
   describe 'index' do
@@ -23,11 +27,28 @@ describe 'navigate' do
     it 'has a list of posts' do
       newpost1 = FactoryGirl.create(:post)
       newpost2 = FactoryGirl.create(:second_post)
+      # TO DO: FactoryGirl bug?
+      newpost1.user_id = user.id
+      newpost2.user_id = user.id
+      newpost1.save
+      newpost2.save
       # newpost1 = FactoryGirl.build_stubbed(:post)
       # newpost2 = FactoryGirl.build_stubbed(:second_post)
       visit posts_path
 
       expect(page).to have_content(/Post1|Post2/)
+    end
+
+    it 'has a scope that only post creators can see their posts' do
+      # newpost1 = Post.create(date: Date.today, rationale: "no rationale1", user_id: @user.id)
+      # newpost2 = Post.create(date: Date.today, rationale: "no rationale2", user_id: @user.id)
+      #other_post = FactoryGirl.create(:post_from_other_user)
+      other_user = User.create(email: 'test_other@test.com', password: 'asdfasdf',
+                password_confirmation: 'asdfasdf', first_name: 'NonAuthorized', last_name: 'User')
+      other_post = Post.create(date: Date.yesterday, rationale: "This should not be seen", user_id: other_user.id)
+
+      visit posts_path
+      expect(page).to_not have_content(/This should not be seen/)
     end
   end
 
@@ -42,9 +63,14 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'displays a delete button in the posts list' do
-      post = FactoryGirl.create(:post)
+      logout(:user)
+      delete_user = FactoryGirl.create(:user)
+      login_as(delete_user, scope: :user)
+
+      delete_post = Post.create(date: Date.today, rationale: "asdf", user_id: delete_user.id)
+
       visit posts_path
-      click_link "delete_#{post.id}"
+      click_link "delete_#{delete_post.id}"
 
       expect(page.status_code).to eq(200)
     end
@@ -77,12 +103,10 @@ describe 'navigate' do
   end
 
   describe 'edit post' do
-    before do
-      @post = FactoryGirl.create(:post)
-    end
 
     it 'can be edited' do
-      visit edit_post_path(@post)
+      login_as(user)
+      visit edit_post_path(post)
 
       fill_in('post[date]', :with => Date.today)
       fill_in('post[rationale]', :with => 'Edited content')
@@ -95,7 +119,7 @@ describe 'navigate' do
       non_authorized_user = FactoryGirl.create(:non_authorized_user)
       login_as(non_authorized_user, scope: :user)
 
-      visit(edit_post_path(@post))
+      visit(edit_post_path(post))
 
       expect(current_path).to eq(root_path)
     end
