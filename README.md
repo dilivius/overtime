@@ -6,6 +6,7 @@
 - x Post -> date:date rationale: text
 - x User -> Devise
 - x AdminUser -> STI
+- AuditLog
 
 ## Features:
 - Approval Workflow
@@ -17,6 +18,7 @@
 
 ## UI:
 - x Bootstrap -> formatting
+- x Icons instead of text for Edit * Delete
 
 # Refactor TO DOs:
-- Refactor posts/_form for admin user with status
+- x Refactor posts/_form for admin user with status
