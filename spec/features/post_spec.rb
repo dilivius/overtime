@@ -44,7 +44,8 @@ describe 'navigate' do
       # newpost2 = Post.create(date: Date.today, rationale: "no rationale2", user_id: @user.id)
       #other_post = FactoryGirl.create(:post_from_other_user)
       other_user = User.create(email: 'test_other@test.com', password: 'asdfasdf',
-                password_confirmation: 'asdfasdf', first_name: 'NonAuthorized', last_name: 'User')
+                password_confirmation: 'asdfasdf', first_name: 'NonAuthorized', last_name: 'User',
+                phone: '0328765348')
       other_post = Post.create(date: Date.yesterday, rationale: "This should not be seen", user_id: other_user.id, overtime_request: 4.0)
 
       visit posts_path

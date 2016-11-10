@@ -9,11 +9,11 @@
 
 @user = User.create(email: 'john@snow.com',
           password: 'asdfasdf',password_confirmation: 'asdfasdf',
-          first_name: 'John', last_name: 'Snow')
+          first_name: 'John', last_name: 'Snow', phone: '012345678')
 puts '1 User created'
 @admin_user = AdminUser.create(email: 'admin@test.com',
           password: 'asdfasdf',password_confirmation: 'asdfasdf',
-          first_name: 'Admin', last_name: 'User')
+          first_name: 'Admin', last_name: 'User', phone: '012385678')
 puts '1 AdminUser created'
 
 100.times do |post|
