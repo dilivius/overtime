@@ -15,5 +15,6 @@ module Overtime
     config.to_prepare do
       Administrate::ApplicationController.helper Overtime::Application.helpers
     end
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
