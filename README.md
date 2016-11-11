@@ -10,7 +10,7 @@
 
 ## Features:
 - Approval Workflow
-- SMS Sending -> link to approval or overtime input
+- SMS Sending -> link to approval or overtime input -> integrate with Heroku scheduler
 - x Admin dashboard
 - x Block non-admins from accessing the Admin Dashboard
 - Email summary to managers for approval
