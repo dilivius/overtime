@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= link_to audit_log.id, audit_log %>
+    <%= audit_log.id %>
   </td>
   <td>
     <%= audit_log.user.full_name %>
@@ -9,11 +9,10 @@
     <%= audit_log.start_date %>
   </td>
   <td>
-    <%# audit_log.end_date %>
+    <%= audit_log.end_date %>
   </td>
   <td>
-    <%# status_label(audit_log.status) %>
-    <%= audit_log.status %>
+    <%= status_span_generator audit_log.status %>
   </td>
   <td>
 
