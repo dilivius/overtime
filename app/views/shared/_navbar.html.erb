@@ -17,7 +17,7 @@
         <%= link_to("Time Entries", posts_path) %>
       </li>
 
-      <!-- TO DO - possibly refactor-->
+      <!-- TO DO - possibly refactor -->
       <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
 
       <li class="<%= active_path?(new_post_path) %>">
