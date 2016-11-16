@@ -12,13 +12,13 @@
           first_name: 'Admin', last_name: 'User', phone: '0123856789')
 puts '1 AdminUser created'
 
-@user = User.create!(email: 'john@snow.com',
+@employee = Employee.create!(email: 'john@snow.com',
           password: 'asdfasdf',password_confirmation: 'asdfasdf',
           first_name: 'John', last_name: 'Snow', phone: '0123456788')
-puts "1 User created"
+puts "1 Employee created"
 
 100.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @user.id, overtime_request: 2.5)
+  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @employee.id, overtime_request: 2.5)
 end
 puts '100 posts have been created'
 
@@ -28,9 +28,9 @@ puts '100 posts have been created'
 # end
 # puts '100 audit_logs have been created'
 
-AuditLog.create!(user_id: @user.id, status: 0, start_date: (Date.today - 6.days))
-AuditLog.create!(user_id: @user.id, status: 0, start_date: (Date.today - 13.days))
-AuditLog.create!(user_id: @user.id, status: 0, start_date: (Date.today - 20.days))
+AuditLog.create!(user_id: @employee.id, status: 0, start_date: (Date.today - 6.days))
+AuditLog.create!(user_id: @employee.id, status: 0, start_date: (Date.today - 13.days))
+AuditLog.create!(user_id: @employee.id, status: 0, start_date: (Date.today - 20.days))
 
 puts "3 audit logs have been created"
 
