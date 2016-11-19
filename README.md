@@ -21,8 +21,8 @@
 - x Update buttons on employee homepage to show on mobile
 - x Update buttons to include timespan
 - x Update buttons sort on employees home page / dashboard
-- Remove unnecessary navbar buttons for managers
-- Implement honeybadger for error reporting
+- x Remove unnecessary navbar buttons for managers
+- x Implement honeybadger for error reporting (this is expensive!)
 - Implement new relic for keeping the site alive (Heroku puts the app to sleep - this will keep the site alive)
 
 ## UI:
