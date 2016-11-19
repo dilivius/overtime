@@ -16,7 +16,7 @@
 - x Email summary to managers for approval
 - x Needs to be documented if employee did not do overtime
 - x Create audit log for each text message
-- How to update end_date when confirmed
+- x How to update end_date when confirmed
 - Update the audit_log status when an overtime item is rejected
 - Update buttons on employee homepage to show on mobile
 - Update buttons to include timespan
