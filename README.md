@@ -15,7 +15,15 @@
 - x Block non-admins from accessing the Admin Dashboard
 - x Email summary to managers for approval
 - x Needs to be documented if employee did not do overtime
-- Create audit log for each text message
+- x Create audit log for each text message
+- How to update end_date when confirmed
+- Update the audit_log status when an overtime item is rejected
+- Update buttons on employee homepage to show on mobile
+- Update buttons to include timespan
+- Update buttons sort on employees home page / dashboard
+- Remove unnecessary navbar buttons for managers
+- Implement honeybadger for error reporting
+- Implement new relic for keeping the site alive (Heroku puts the app to sleep - this will keep the site alive)
 
 ## UI:
 - x Bootstrap -> formatting
