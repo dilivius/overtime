@@ -17,10 +17,10 @@
 - x Needs to be documented if employee did not do overtime
 - x Create audit log for each text message
 - x How to update end_date when confirmed
-- Update the audit_log status when an overtime item is rejected
-- Update buttons on employee homepage to show on mobile
-- Update buttons to include timespan
-- Update buttons sort on employees home page / dashboard
+- x Update the audit_log status when an overtime item is rejected
+- x Update buttons on employee homepage to show on mobile
+- x Update buttons to include timespan
+- x Update buttons sort on employees home page / dashboard
 - Remove unnecessary navbar buttons for managers
 - Implement honeybadger for error reporting
 - Implement new relic for keeping the site alive (Heroku puts the app to sleep - this will keep the site alive)
