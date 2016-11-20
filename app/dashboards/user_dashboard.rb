@@ -24,6 +24,8 @@ class UserDashboard < Administrate::BaseDashboard
     first_name: Field::String.with_options(searchable: true),
     last_name: Field::String.with_options(searchable: true),
     phone: Field::String.with_options(searchable: false),
+    ssn: Field::Number.with_options(searchable: false),
+    company: Field::String.with_options(searchable: false),
     type: Field::String.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
@@ -41,6 +43,8 @@ class UserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :phone,
+    :ssn,
+    :company,
     :type,
   ].freeze
 
@@ -62,6 +66,8 @@ class UserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :phone,
+    :ssn,
+    :company,
     :type,
     :created_at,
     :updated_at,
@@ -76,6 +82,8 @@ class UserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :phone,
+    :ssn,
+    :company,
     :type,
   ].freeze
 

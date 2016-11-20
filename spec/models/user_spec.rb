@@ -4,7 +4,8 @@ RSpec.describe User, type: :model do
   before do
     @user = User.create(email: 'john@snow.com',
               password: 'asdfasdf',password_confirmation: 'asdfasdf',
-              first_name: 'John', last_name: 'Snow', phone: '0123423890')
+              first_name: 'John', last_name: 'Snow', phone: '0123423890',
+              ssn: 1234, company: 'IT')
   end
 
   describe 'creation' do
@@ -41,6 +42,26 @@ RSpec.describe User, type: :model do
     end
     it 'it requires the phone attr to only have 10 chars' do
       @user.phone = '01234567676770'
+
+      expect(@user).to_not be_valid
+    end
+    it 'it requires an ssn attr' do
+      @user.ssn = nil
+
+      expect(@user).to_not be_valid
+    end
+    it 'it requires a company' do
+      @user.company = nil
+
+      expect(@user).to_not be_valid
+    end
+    it 'it requires the ssn attr to contain only integers' do
+      @user.ssn = 'mygreatstr'
+
+      expect(@user).to_not be_valid
+    end
+    it 'it requires the ssn attr to only have 4 chars' do
+      @user.ssn = '12345'
 
       expect(@user).to_not be_valid
     end
