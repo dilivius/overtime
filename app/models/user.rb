@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts
   has_many :audit_logs
+  has_many :members_associations, class_name: 'Member'
+  has_many :members, through: :members_associations
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :first_name, :last_name, :email, :phone
