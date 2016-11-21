@@ -1,5 +1,5 @@
 <tr>
-  <td>
+  <td class="hidden-phone hidden-tablet">
     <%= post.id %>
   </td>
   <td>
@@ -8,10 +8,10 @@
   <td>
     <%= post.date %>
   </td>
-  <td>
-    <%= truncate post.rationale %>
+  <td class="hidden-phone hidden-tablet">
+      <%= truncate post.rationale %>
   </td>
-  <td>
+  <td class="hidden-phone hidden-tablet">
     <%= post.user.full_name %>
   </td>
   <td>
