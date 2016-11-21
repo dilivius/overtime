@@ -1,9 +1,11 @@
 namespace :notification do
   desc "Sends reminder SMS notifications to users"
   task sms: :environment do
-    if Time.now.wednesday?
+    # if Time.now.wednesday?
+    if not_the_weekend
       employees = Employee.all
-      notification_message = "Please log into the Overtime management dashboard to request overtime or confirm your hours for last week: http://morning-overtime-2016.herokuapp.com/"
+      notification_message = "Please log into the Time Tracking management dashboard to request overtime or confirm your hours for last week: http://morning-overtime-2016.herokuapp.com/"
+
       employees.each do |employee|
         AuditLog.create!(user_id: employee.id)
         SmsTool.send_sms(number: employee.phone, message: notification_message)
@@ -26,4 +28,8 @@ namespace :notification do
     end
   end
 
+  private
+  def not_the_weekend
+    !Time.now.sunday? || !Time.now.saturday?
+  end
 end
