@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navigate' do
   let(:user) { FactoryGirl.create(:user)}
   let(:post) do
-    Post.create(date: Date.today, rationale: "rationale", user_id: user.id, overtime_request: 1.0)
+    Post.create(date: Date.today, rationale: "rationale", user_id: user.id, hours: 10.0)
   end
 
   before do
@@ -46,7 +46,7 @@ describe 'navigate' do
       other_user = User.create(email: 'test_other@test.com', password: 'asdfasdf',
                 password_confirmation: 'asdfasdf', first_name: 'NonAuthorized', last_name: 'User',
                 phone: '0328765348')
-      other_post = Post.create(date: Date.yesterday, rationale: "This should not be seen", user_id: other_user.id, overtime_request: 4.0)
+      other_post = Post.create(date: Date.yesterday, rationale: "This should not be seen", user_id: other_user.id, hours: 4.0)
 
       visit posts_path
       expect(page).to_not have_content(/This should not be seen/)
@@ -70,7 +70,7 @@ describe 'navigate' do
       delete_user = FactoryGirl.create(:user)
       login_as(delete_user, scope: :user)
 
-      delete_post = Post.create(date: Date.today, rationale: "asdf", user_id: delete_user.id, overtime_request: 3.0)
+      delete_post = Post.create(date: Date.today, rationale: "asdf", user_id: delete_user.id, hours: 30.0)
 
       visit posts_path
       click_link "delete_#{delete_post.id}"
@@ -91,7 +91,7 @@ describe 'navigate' do
     it 'can be created from New page' do
       fill_in  'post[date]', with: Date.today
       fill_in  'post[rationale]', with: 'Some rationale'
-      fill_in  'post[overtime_request]', with: 4.5
+      fill_in  'post[hours]', with: 4.5
 
       expect{ click_on 'Save'}.to change(Post, :count).by(1)
     end
@@ -99,7 +99,7 @@ describe 'navigate' do
     it 'will have user associated with post' do
       fill_in  'post[date]', with: Date.today
       fill_in  'post[rationale]', with: 'User Association'
-      fill_in  'post[overtime_request]', with: 4.5
+      fill_in  'post[hours]', with: 4.5
 
       click_on 'Save'
 
