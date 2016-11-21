@@ -18,7 +18,7 @@ puts '1 AdminUser created'
 puts "1 Employee created"
 
 100.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @employee.id, hours: 12.5)
+  Post.create!(date: Date.today, work_performed: "#{post} work_performed content", user_id: @employee.id, hours: 12.5)
 end
 puts '100 posts have been created'
 
